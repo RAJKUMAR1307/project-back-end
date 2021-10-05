@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
 
-//import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,29 +10,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.modal.Student;
+import com.example.demo.repository.StudentRepository;
 
-import com.example.demo.modal.College;
-import com.example.demo.repository.CollegeRepository;
 
 
 	
 
 @RestController
-@RequestMapping(value="/college")
-public class CollegeController {
+@RequestMapping(value="/student")
+public class StudentController {
 	
 	@Autowired
-	private CollegeRepository CollegeRepo;
+	private StudentRepository StudentRepo;
 
 	@PostMapping(value="/insert")
-	public ResponseEntity<?> insertcollege(@RequestBody final College s){
-//		System.out.println(s.getName()+ " " + s.getAge()+ " " + s.getGender() + " " + s.getQualification() + " " + s.getDob());
-		CollegeRepo.save(s);
+	public ResponseEntity<?> insertstudent(@RequestBody final Student s){
+		StudentRepo.save(s);
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body("College Registered successfully!");
+				.body("Student Registered successfully!");
 		
-	}	
+	}
+
+	
 
 	
 	
