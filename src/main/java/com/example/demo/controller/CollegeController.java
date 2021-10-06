@@ -26,9 +26,9 @@ public class CollegeController {
 	private CollegeRepository CollegeRepo;
 
 	@PostMapping(value="/insert")
-	public ResponseEntity<?> insertcollege(@RequestBody final College s){
+	public ResponseEntity<?> insertcollege(@RequestBody final College c){
 //		System.out.println(s.getName()+ " " + s.getAge()+ " " + s.getGender() + " " + s.getQualification() + " " + s.getDob());
-		CollegeRepo.save(s);
+		CollegeRepo.save(c);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body("College Registered successfully!");
@@ -49,7 +49,34 @@ public class CollegeController {
 				.body("College deleted Successfully!");
 		
 	}
+	@GetMapping(value = "/get/{id}")
+	public ResponseEntity<?> getCollege(@PathVariable final int id){
+		College college = CollegeRepo.findById(id).get();
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(college);
+	}     
+	@PostMapping(value="/update")
+	public ResponseEntity<?> updateCollege(@RequestBody final College c){
+		CollegeRepo.save(c);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("Student saved successfully!");
+		
+	}
+	@PostMapping(value = "/user")	
+	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College clg){
+		College college = (College) CollegeRepo.findByUsernameAndPassword(clg.getUsername(), clg.getPassword());
+		if(college!=null)
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body("login successfully");
+		else
+			return ResponseEntity
+					.status(HttpStatus.BAD_REQUEST)
+					.body("login failed");
+			
 	
-	
+	}
 }
 

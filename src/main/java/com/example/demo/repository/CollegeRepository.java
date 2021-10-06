@@ -6,6 +6,8 @@ import com.example.demo.modal.College;
 
 
 public interface CollegeRepository extends CrudRepository<College, Integer> {
+
+	College findByUsernameAndPassword(String username, String password);
 	
 }
 		
