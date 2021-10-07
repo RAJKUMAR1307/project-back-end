@@ -61,12 +61,12 @@ public class CollegeController {
 		CollegeRepo.save(c);
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body("Student saved successfully!");
+				.body("College saved successfully!");
 		
 	}
 	@PostMapping(value = "/user")	
-	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College clg){
-		College college = (College) CollegeRepo.findByUsernameAndPassword(clg.getUsername(), clg.getPassword());
+	public ResponseEntity<?> findByUsernameAndPassword(@RequestBody final College check){
+		College college = (College) CollegeRepo.findByUsernameAndPassword(check.getUsername(), check.getPassword());
 		if(college!=null)
 			return ResponseEntity
 					.status(HttpStatus.OK)
