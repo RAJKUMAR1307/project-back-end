@@ -6,21 +6,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Response {
+public class Respond {
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO)
      private int id;  
-     private String response;
-	public int getId() {
+     private String respond;
+	
+    public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getResponse() {
-		return response;
+	public String getRespond() {
+		return respond;
 	}
-	public void setResponse(String response) {
-		this.response = response;
+	public void setRespond(String respond) {
+		this.respond = respond;
 	}
 }
